@@ -20,4 +20,8 @@
 }
 
 
+- (IBAction)actionOperator:(id)sender {
+    operator = [(UIButton*)sender currentTitle];
+    NSLog(@"%@", operator);
+}
 @end

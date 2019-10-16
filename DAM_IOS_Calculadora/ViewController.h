@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+NSString *operator = @"";
+
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *screen;
+
+- (IBAction)actionOperator:(id)sender;
 
 @end
 
