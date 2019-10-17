@@ -20,6 +20,7 @@ float secondNumber;
 - (IBAction)actionNumber:(id)sender;
 - (IBAction)actionEqual:(id)sender;
 - (IBAction)actionChange:(id)sender;
+- (IBAction)actionMemory:(id)sender;
 
 @end
 
