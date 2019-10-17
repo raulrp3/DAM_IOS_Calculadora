@@ -16,12 +16,50 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    operator = [[NSString alloc] init];
 }
 
 
 - (IBAction)actionOperator:(id)sender {
-    operator = [(UIButton*)sender currentTitle];
-    NSLog(@"%@", operator);
+    firstNumber = [_screen.text floatValue];
+    operator = [(UIButton*) sender currentTitle];
+    _screen.text = @"";
+}
+
+- (IBAction)actionNumber:(id)sender {
+    _screen.text = [[NSString alloc] initWithFormat:@"%@%@", _screen.text, [(UIButton*) sender currentTitle]];
+}
+
+- (IBAction)actionEqual:(id)sender {
+    NSNumber *result = [[NSNumber alloc] init];
+    secondNumber = [_screen.text floatValue];
+    if ([operator isEqualToString:@"+"]){
+        result = @(firstNumber + secondNumber);
+        _screen.text = [[NSString alloc] initWithFormat:@"%@", result];
+    }else if ([operator isEqualToString:@"-"]){
+        result = @(firstNumber - secondNumber);
+        _screen.text = [[NSString alloc] initWithFormat:@"%@", result];
+    }else if ([operator isEqualToString:@"X"]){
+        result = @(firstNumber * secondNumber);
+        _screen.text = [[NSString alloc] initWithFormat:@"%@", result];
+    }else if ([operator isEqualToString:@"/"]){
+        result = @(firstNumber / secondNumber);
+        _screen.text = [[NSString alloc] initWithFormat:@"%@", result];
+    }else if ([operator isEqualToString:@"%"]){
+        firstNumber /= 100;
+        result = @(firstNumber * secondNumber);
+        _screen.text = [[NSString alloc] initWithFormat:@"%@", result];
+    }else{
+        firstNumber = 0;
+        secondNumber = 0;
+        _screen.text = @"";
+    }
+}
+
+- (IBAction)actionChange:(id)sender {
+    secondNumber = [_screen.text floatValue];
+    NSNumber *result = [[NSNumber alloc] init];
+    result = @(- secondNumber);
+    _screen.text = [[NSString alloc] initWithFormat:@"%@", result];
 }
 @end
